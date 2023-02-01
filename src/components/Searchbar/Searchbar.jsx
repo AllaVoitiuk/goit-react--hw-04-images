@@ -5,15 +5,11 @@ import { ReactComponent as Logo } from '../../SVG/search.svg';
 
 export default function Searchbar ({onSubmit}) {
   const [searchValue, setSearchValue]= useState('');
+  // eslint-disable-next-line
   const[page, setPage] = useState(1);
-  // state = {
-  //   searchValue: '',
-  //   page: 1,
-  // };
 
   const handleChange = event => {
     setSearchValue (event.target.value.toLowerCase());
-    // this.setState({ searchValue: event.target.value.toLowerCase() });
   };
 
    const handleSubmit = event => {
