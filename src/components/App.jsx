@@ -11,13 +11,16 @@ export function App() {
   const [images, setImages] = useState([]);
   const [searchValue, setSearchValue] = useState('');
   const [page, setPage] = useState(1);
-  const [loadMoreBtn, setLoadMoreBtn] = useState(false);
+  const [loadMoreBtn, setLoadMoreBtn] = useState(false);  
   const [status, setStatus] = useState('idle'); //Status.IDLE
+  
 
   const handleSearchSubmit = searchValue => {
     setSearchValue(searchValue); //, page: 1, images: []
     setPage(1);
     setImages([]);
+    setStatus('pending');
+    setLoadMoreBtn(false);
   };
 
   const LoadMore = e => {
@@ -28,12 +31,11 @@ export function App() {
     if (!searchValue) {
       return;
     }
-
-    setStatus('pending');
-    let prevImages = images;
+    
+    //let prevImages = images;    
 
     FetchData(page, searchValue).then(newImages => {
-      console.log(newImages);
+      //console.log(newImages);
 
       if (newImages !== undefined) {
         if (newImages.length < 12) {
@@ -42,13 +44,15 @@ export function App() {
           setLoadMoreBtn(true);
         }
 
-        setImages(prevImages.concat(newImages));
+        setImages(() => {return images.concat(newImages)});
+
+        //setImages(images.concat(newImages));
       }
     });
 
     setStatus('resolved');
-    // eslint-disable-next-line
-  }, [page, searchValue]);
+  
+  }, [page, searchValue, status]);
 
   return (
     <div className={styles.app}>

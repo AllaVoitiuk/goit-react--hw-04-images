@@ -5,7 +5,7 @@ import { ReactComponent as Logo } from '../../SVG/search.svg';
 
 export default function Searchbar ({onSubmit}) {
   const [searchValue, setSearchValue]= useState('');
-  // eslint-disable-next-line
+ 
   const[page, setPage] = useState(1);
 
   const handleChange = event => {
@@ -20,7 +20,7 @@ export default function Searchbar ({onSubmit}) {
       return;
     }
     
-    onSubmit(searchValue);
+    onSubmit(searchValue,page);
     setSearchValue('');
     setPage(1);
     };
