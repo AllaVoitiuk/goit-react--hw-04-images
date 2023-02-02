@@ -30,9 +30,7 @@ export function App() {
   useEffect(() => {
     if (!searchValue) {
       return;
-    }
-    
-    //let prevImages = images;    
+    }      
 
     FetchData(page, searchValue).then(newImages => {
       //console.log(newImages);
@@ -43,10 +41,7 @@ export function App() {
         } else {
           setLoadMoreBtn(true);
         }
-
-        setImages(() => {return images.concat(newImages)});
-
-        //setImages(images.concat(newImages));
+        setImages(images.concat(newImages));
       }
     });
 
