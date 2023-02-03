@@ -17,7 +17,6 @@ export const FetchData = async (page = 1, searchValue = '') => {
     return newImages;
   } catch (err) {
     console.log(err);
-
     return undefined;
   }
 };
