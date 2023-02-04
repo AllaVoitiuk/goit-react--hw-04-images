@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect} from 'react';
 import Searchbar from './Searchbar/Searchbar';
 import ImageGallery from './ImageGallery/ImageGallery';
 import styles from './ImageGallery/ImageGallery.module.css';
@@ -26,28 +26,31 @@ export function App() {
   const LoadMore = e => {
     setPage(prevPage => prevPage + 1);
   };
+  
+  // let fetchImages = null;
 
   useEffect(() => {
     if (!searchValue) {
       return;
     }      
 
-    FetchData(page, searchValue).then(newImages => {
-      //console.log(newImages);
+    FetchData(page, searchValue).then(newImages => {      
 
       if (newImages !== undefined) {
         if (newImages.length < 12) {
           setLoadMoreBtn(false);
         } else {
           setLoadMoreBtn(true);
-        }
-        setImages(images.concat(newImages));
+        }      
+        
+        setImages(prev=>[...prev, ...newImages]);
       }
     });
 
     setStatus('resolved');
   
-  }, [page, searchValue, status]);
+  }, [page, searchValue]);
+  
 
   return (
     <div className={styles.app}>

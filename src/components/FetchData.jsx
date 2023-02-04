@@ -12,8 +12,8 @@ export const FetchData = async (page = 1, searchValue = '') => {
       const { id, webformatURL, largeImageURL } = image;
       return { id, webformatURL, largeImageURL };
     });
-
-    //console.log(newImages);
+    
+    
     return newImages;
   } catch (err) {
     console.log(err);
