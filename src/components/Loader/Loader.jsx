@@ -2,7 +2,7 @@ import { ImSpinner } from 'react-icons/im';
 import style from './Loader.module.css';
 
 export function Loader() {
-  //console.log("show Loader");
+  console.log("show Loader");
   return (
     <div role="alert">
       <div style={style.spinner}>

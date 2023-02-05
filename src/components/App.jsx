@@ -9,6 +9,7 @@ import { FetchData } from './FetchData';
 
 export function App() {
   const [images, setImages] = useState([]);
+  
   const [searchValue, setSearchValue] = useState('');
   const [page, setPage] = useState(1);
   const [loadMoreBtn, setLoadMoreBtn] = useState(false);  
@@ -25,6 +26,7 @@ export function App() {
 
   const LoadMore = e => {
     setPage(prevPage => prevPage + 1);
+    setStatus('pending');
   };
   
   // let fetchImages = null;
