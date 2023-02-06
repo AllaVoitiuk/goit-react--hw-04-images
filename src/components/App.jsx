@@ -28,9 +28,7 @@ export function App() {
     setPage(prevPage => prevPage + 1);
     setStatus('pending');
   };
-  
-  // let fetchImages = null;
-
+    
   useEffect(() => {
     if (!searchValue) {
       return;
@@ -46,10 +44,9 @@ export function App() {
         }      
         
         setImages(prev=>[...prev, ...newImages]);
+        setStatus('resolved')
       }
-    });
-
-    setStatus('resolved');
+    });   
   
   }, [page, searchValue]);
   
